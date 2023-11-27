@@ -1,0 +1,14 @@
+{% extends 'index.html'%}
+
+{% block body %}
+<div class="card w-50 m-auto my-5">
+    <div class="card-header">Login</div>
+    <div class="card-body">
+        <form action="{% url 'UserLoginView' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="submit" class="btn btn-primary"/>
+        </form>
+    </div>
+</div>
+{% endblock %}

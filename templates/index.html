@@ -42,8 +42,8 @@
       <!-- Navbar brand -->
       <a class="navbar-brand mt-2 mt-lg-0" href="#">
         <img
-          src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-          height="15"
+          src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg"
+          height="20"
           alt="MDB Logo"
           loading="lazy"
         />
@@ -117,7 +117,8 @@
         </ul>
       </div>
       <!-- Avatar -->
-      <div class="dropdown">
+      {% if user.is_authenticated %}
+        <div class="dropdown">
         <a
           data-mdb-dropdown-init
           class="dropdown-toggle d-flex align-items-center hidden-arrow"
@@ -139,16 +140,23 @@
           aria-labelledby="navbarDropdownMenuAvatar"
         >
           <li>
+            <p class="dropdown-item">Hi, {{user.username}}</p>
+          </li>
+          <hr/>
+          <li>
             <a class="dropdown-item" href="#">My profile</a>
           </li>
           <li>
             <a class="dropdown-item" href="#">Settings</a>
           </li>
           <li>
-            <a class="dropdown-item" href="#">Logout</a>
+            <a class="dropdown-item" href="{% url 'UserLoginView' %}">Logout</a>
           </li>
         </ul>
       </div>
+      {% else %}
+        <a href="{% url 'LoginView' %}" class="btn btn-outline-primary">Login</a>
+      {% endif %}
     </div>
     <!-- Right elements -->
   </div>
