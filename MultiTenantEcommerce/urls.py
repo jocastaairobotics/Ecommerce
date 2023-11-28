@@ -24,7 +24,7 @@ from .views import HomeView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", HomeView.as_view(), name="Home"),
-    path("authentication", include("Authentication.urls"))
+    path("authentication/", include("Authentication.urls"))
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

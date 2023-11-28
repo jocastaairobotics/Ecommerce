@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class ProductCategory(models.Model):
@@ -19,3 +20,21 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Invoice(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="customer")
+    product = models.ManyToManyField(to=Product)
+
+    def __str__(self):
+        return f"{self.user.username}"
+
+    def products(self):
+        return ",\t".join([x.name for x in self.product.all()])
+
+    def totals(self):
+        total = 0
+        for i in self.product.all():
+            total += i.pricing
+        return total
+
