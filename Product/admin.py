@@ -9,6 +9,7 @@ class ProductCategoryAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'pricing']
 
+
 class InvoiceAdmin(admin.ModelAdmin):
     list_display = ['user', 'products', 'totals']
 
