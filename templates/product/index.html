@@ -1,0 +1,45 @@
+{% extends 'SellerBoard/index.html' %}
+
+{% block body %}
+<div class="card">
+    <div class="d-flex justify-content-between px-5 py-2">
+        <h3>Product</h3>
+        <a class="btn btn-primary" href="{% url 'CreateProduct' %}">Add Product</a>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Pricing</th>
+                    <th scope="col">Warranty</th>
+                    <th>Action</th>
+                </tr>
+              </thead>
+            <tbody>
+            {% for product in object_list %}
+                <tr>
+                    <th>
+                        <img src="{{product.image.url}}" alt={{product.name}} width="50px"/>
+                    </th>
+                    <th>{{product.name}}</th>
+                    <td>{{product.category}}</td>
+                    <td>{{product.pricing}}</td>
+                    <td>{{product.warranty}}</td>
+                    <td class="d-flex gap-3">
+                        <a href="{% url 'UpdateProduct' product.pk %}">
+                            <i class="far fa-pen-to-square"></i>
+                        </a>
+                        <a href="{% url 'DeleteProduct' product.pk %}">
+                            <i class="fas fa-trash-can" style="color:red;"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

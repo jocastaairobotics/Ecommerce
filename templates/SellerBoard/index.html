@@ -40,7 +40,7 @@
     <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Navbar brand -->
-      <a class="navbar-brand mt-2 mt-lg-0" href="/">
+      <a class="navbar-brand mt-2 mt-lg-0" href="#">
         <img
           src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg"
           height="20"
@@ -50,11 +50,15 @@
       </a>
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        {% for category in cat %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'ProductByCategory' category.pk %}">{{category.name}}</a>
+          <a class="nav-link" href="#">Dashboard</a>
         </li>
-        {% endfor %}
+        <li class="nav-item">
+          <a class="nav-link" href="#">Team</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Projects</a>
+        </li>
       </ul>
       <!-- Left links -->
     </div>
@@ -118,7 +122,7 @@
         <a
           data-mdb-dropdown-init
           class="dropdown-toggle d-flex align-items-center hidden-arrow"
-          href="#"
+          href="/"
           id="navbarDropdownMenuAvatar"
           role="button"
           aria-expanded="false"
@@ -160,81 +164,24 @@
   </div>
   <!-- Container wrapper -->
 </nav>
-<div class="mh-100">
+<div style="min-height:75vh">
+
+<div class="row">
+  <div class="col-2 p-3 ">
+  <div>
+    <ul class="list-group list-group-light">
+    <li class="list-group-item px-3"><a href="{% url 'ListCategory' %}"><i class="fas fa-folder-tree"></i> Category</a></li>
+    <li class="list-group-item px-3"><a href="{% url 'ListProduct' %}"><i class="fab fa-opencart"></i> Product</a></li>
+<!--    <li class="list-group-item px-3">Vestibulum at eros</li>-->
+  </ul>
+      </div>
+    </div>
+    <div class="col-sm-10 p-3">
 {% block body %}
-
-<div id="carouselExampleCaptions h-50" class="carousel slide" data-mdb-ride="carousel" data-mdb-carousel-init>
-  <div class="carousel-indicators">
-    <button
-      type="button"
-      data-mdb-target="#carouselExampleCaptions"
-      data-mdb-slide-to="0"
-      class="active"
-      aria-current="true"
-      aria-label="Slide 1"
-    ></button>
-    <button
-      type="button"
-      data-mdb-target="#carouselExampleCaptions"
-      data-mdb-slide-to="1"
-      aria-label="Slide 2"
-    ></button>
-    <button
-      type="button"
-      data-mdb-target="#carouselExampleCaptions"
-      data-mdb-slide-to="2"
-      aria-label="Slide 3"
-    ></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" class="d-block w-100" alt="Wild Landscape"/>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp" class="d-block w-100" alt="Camera"/>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp" class="d-block w-100" alt="Exotic Fruits"/>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
-<div class="d-flex flex-wrap bg-body-tertiary m-2">
-{% for product in prd %}
-<div class="card col-2 m-2" width>
-  <img src="{{product.image.url}}" class="card-img-top" alt="Fissure in Sandstone" height="200px"/>
-  <div class="card-body">
-    <h5 class="card-title">{{product.name}}</h5>
-    <p class="card-text">{{product.description}}</p>
-  </div>
-  <div class="card-footer">
-    <a href="{% url 'ProductDetails' product.pk %}" class="btn btn-primary w-100">View Detail</a>
-  </div>
-</div>
-{% endfor %}
-</div>
-
 {% endblock %}
+    </div>
+</div>
+
   </div>
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-body-tertiary text-muted">
@@ -242,7 +189,7 @@
   <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
     <!-- Left -->
     <div class="me-5 d-none d-lg-block">
-      <span>Get connected with us on social networks:</span>
+      <span>Seller Board:</span>
     </div>
     <!-- Left -->
 

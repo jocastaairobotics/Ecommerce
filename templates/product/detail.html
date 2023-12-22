@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<div class="d-flex">
+    <div>
+        <img src="{{object.image.url}}" width="500px"/>
+    </div>
+    <div class="my-5 mx-2">
+        <h3>{{object.name}}</h3>
+        <pre>{{object.description}}</pre>
+        <h6>₹ {{object.pricing}} </h6>
+        <p>{{object.warranty}} years of warranty</p>
+    </div>
+</div>
+
+{% endblock %}
