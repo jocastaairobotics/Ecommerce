@@ -1,13 +1,21 @@
 {% extends 'index.html' %}
 
+{% block header %}
+<title>{{search}}</title>
+{% endblock %}
+
 {% block body %}
+<div class="m-5">
+<h1> You Searched for <b>"{{search}}"</b></h1>
+<hr>
+<br>
 <div class="d-flex flex-wrap bg-body-tertiary m-2">
-{% for product in object_list %}
+{% for product in products %}
 <div class="card col-2 m-2" width>
   <img src="{{product.image.url}}" class="card-img-top" alt="Fissure in Sandstone" height="200px"/>
   <div class="card-body">
     <h5 class="card-title">{{product.name}}</h5>
-    <p class="card-text d-inline-block text-truncate" style="max-width: 150px">{{product.description}}</p>
+    <p class="card-text">{{product.description}}</p>
   </div>
   <div class="card-footer">
     <a href="{% url 'ProductDetails' product.pk %}" class="btn btn-primary w-100">View Detail</a>
@@ -15,5 +23,5 @@
 </div>
 {% endfor %}
 </div>
-
+</div>
 {% endblock %}

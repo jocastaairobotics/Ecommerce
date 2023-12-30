@@ -7,10 +7,40 @@
     </div>
     <div class="my-5 mx-2">
         <h3>{{object.name}}</h3>
+        <h6> <span class="text-danger">Actual Price: <del>₹ {{object.actual_price}}</del></span> <span class="text-success">Offer Price: ₹ {{object.selling_price}}</span> </h6>
+<!--        <a href="{% url 'CartCreateView' %}">-->
+<!--            <button class="btn btn-success">Add to Cart</button>-->
+<!--        </a>-->
+        <button type="button" class="btn btn-primary" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#addToCart">
+  Buy Now
+</button>
         <pre>{{object.description}}</pre>
-        <h6>₹ {{object.pricing}} </h6>
         <p>{{object.warranty}} years of warranty</p>
     </div>
+</div>
+
+<div class="modal fade" id="addToCart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form action="{% url 'CartCreateView' %}" method="post" id="createCart">
+              {% csrf_token %}
+              <input type="hidden" name="product" value="{{object.pk}}"/>
+              {{form.qty.label}}
+              {{form.qty}}
+              {{form.qty.errors}}
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" form="createCart" data-mdb-ripple-init>Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}

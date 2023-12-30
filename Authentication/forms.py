@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from .models import Address
 
 
 class UserLoginForms(forms.Form):
@@ -20,3 +21,17 @@ class SignupForm(UserCreationForm):
         widget=forms.PasswordInput(attrs={"class": "form-control"}),
         help_text="Your password should be exact to password 1"
     )
+
+
+class AddressForm(forms.ModelForm):
+
+    class Meta:
+        model = Address
+        exclude = ["user"]
+        widgets = {
+            "address": forms.Textarea(attrs={"class": "form-control", "rows": "3"}),
+            "city": forms.TextInput(attrs={"class": "form-control"}),
+            "state": forms.TextInput(attrs={"class": "form-control"}),
+            "pincode": forms.TextInput(attrs={"class": "form-control"}),
+            "landmark": forms.TextInput(attrs={"class": "form-control"})
+        }

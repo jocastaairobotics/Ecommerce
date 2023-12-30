@@ -7,7 +7,7 @@ class ProductCategoryAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['name', 'pricing']
+    list_display = ['name', 'selling_price']
 
 
 class InvoiceAdmin(admin.ModelAdmin):

@@ -19,7 +19,11 @@
             {% for category in object_list %}
                 <tr>
                     <th>{{category.name}}</th>
+                    {% if category.parent_category %}
                     <td>{{category.parent_category}}</td>
+                    {% else %}
+                    <td>- - -</td>
+                    {% endif %}
                     <td class="d-flex gap-3">
                         <a href="{% url 'UpdateCategory' category.pk %}">
                             <i class="far fa-pen-to-square"></i>

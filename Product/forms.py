@@ -1,5 +1,5 @@
 from django import forms
-from .models import ProductCategory, Product
+from .models import ProductCategory, Product, Cart
 
 
 class ProductCategoryForm(forms.ModelForm):
@@ -23,4 +23,14 @@ class ProductForm(forms.ModelForm):
             "pricing": forms.NumberInput(attrs={"class": "form-control"}),
             "warranty": forms.NumberInput(attrs={"class": "form-control"}),
             "description": forms.Textarea(attrs={"class": "form-control"})
+        }
+
+
+class CartForm(forms.ModelForm):
+
+    class Meta:
+        model = Cart
+        fields = "__all__"
+        widgets = {
+            "qty": forms.NumberInput(attrs={"class": "form-control"})
         }

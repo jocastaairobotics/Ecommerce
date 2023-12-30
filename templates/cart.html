@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<div class="my-5 mx-2">
+<div>
+    <h3>Cart</h3>
+</div>
+<hr/>
+    <div class="d-flex gap-5">
+<div class="mx-3 w-75">
+{% for product in object_list %}
+<div class="d-flex gap-5 align-items-center">
+    <img src="{{product.product.image.url}}" width="100px" height="100px"/>
+    <div>
+        <h1>{{product.product.name}}</h1>
+        <div >
+            <div>
+            <input type="number" class="form-control" value="{{product.qty}}"/>
+            <h6 >Price: <span class="text-success">₹ {{product.product.selling_price}}</span></h6>
+            <i>You are saving: <b class="text-success">{{product.product.saving}}</b></i>
+        </div>
+            <a href="{% url 'CartDelete' product.id%}"><i class="fas fa-trash text-secondary"></i></a>
+        </div>
+
+    </div>
+</div>
+{% endfor %}
+    <hr/>
+    <div class="d-flex justify-content-between">
+        <i>Qunatity = {{quantity}}</i>
+        <i>Total = {{total}}</i>
+    </div>
+</div>
+    <div class="w-25">
+        {{address.as_p}}
+        <input class="btn btn-warning" type="submit" value="Checkout"/>
+    </div>
+    </div>
+    </div>
+{% endblock %}
